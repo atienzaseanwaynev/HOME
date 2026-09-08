@@ -1,0 +1,991 @@
+<style>
+
+body {
+  background-repeat:no-repeat;
+  background-attachment:pixed; 
+  background-size: 100% 100%;  
+  background-color: #344955;
+  height: 100vh;
+  color:white;
+  margin:0;
+  font-family: monospace;
+}
+
+header{
+  width: 100%;
+  height: 40px;
+  background-color: #35374B;
+  justify-content: space-between;
+  padding:5px 21px;
+  display: flex;
+  align-items:center;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+.nav { 
+    padding-inline: 1rem;
+    background: white;
+    color:black;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle {
+    position:absolute;
+    top: 6.5%;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.toggle .menu {
+    height: 2rem;
+    margin-top:0.2rem;
+}
+
+.toggle .close {
+    display: none;
+    height: 2.3rem;
+    margin-right: 0.2rem;
+}
+
+.nav-checkbox {
+    display:none;
+}
+
+.menu {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu li {
+    display:none;
+    padding:1rem;
+    list-style:none;
+    font-size: 10px;
+}
+
+.menu li:first-child {
+    display: block;
+    margin-right: auto;
+    padding: 0;
+}
+
+.menu a {
+    color:inherit;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.logo {
+    height: 2.5rem;
+    margin-top:0.7rem;
+}
+
+#nav-checkbox:checked~ul.menu li {
+    display: block;
+}
+
+#nav-checkbox:checked~label.toggle .close {
+    display:block;
+}
+
+#nav-checkbox:checked~label.toggle .menu {
+    display:none;
+}
+
+@media (min-width: 480px) {
+    .toggle {
+        display:none;
+    }
+    .menu {
+        flex-direction: row;
+    }
+    .menu li {
+        display:block;
+    }
+}
+
+.btn-31,
+.btn-31 *,
+.btn-31 :after,
+.btn-31 :before,
+.btn-31:after,
+.btn-31:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-31 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+}
+
+.btn-31:disabled {
+  cursor: default;
+}
+
+.btn-31:-moz-focusring {
+  outline: auto;
+}
+
+.btn-31 svg {
+  display: block;
+  -vertical-align: middle;
+}
+
+.btn-31 [hidden] {
+  display: none;
+}
+
+.btn-31 {
+  border-width: 1px;
+  padding: 1rem 2rem;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.btn-31:before {
+  --progress: 100%;
+  background: #fff;
+  -webkit-clip-path: polygon(
+    100% 0,
+    var(--progress) var(--progress),
+    0 100%,
+    100% 100%
+  );
+  clip-path: polygon(
+    100% 0,
+    var(--progress) var(--progress),
+    0 100%,
+    100% 100%
+  );
+  content: "";
+  inset: 0;
+  position: absolute;
+  transition: -webkit-clip-path 0.2s ease;
+  transition: clip-path 0.2s ease;
+  transition: clip-path 0.2s ease, -webkit-clip-path 0.2s ease;
+}
+
+.btn-31:hover:before {
+  --progress: 0%;
+}
+
+.btn-31 .text-container {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-31 .text {
+  display: block;
+  font-weight: 900;
+  mix-blend-mode: difference;
+  position: relative;
+}
+
+.btn-31:hover .text {
+  -webkit-animation: move-up-alternate 0.3s ease forwards;
+  animation: move-up-alternate 0.3s ease forwards;
+}
+
+@-webkit-keyframes move-up-alternate {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(80%);
+  }
+
+  51% {
+    transform: translateY(-80%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes move-up-alternate {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(80%);
+  }
+
+  51% {
+    transform: translateY(-80%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+footer{
+  height: auto;
+  width:100%;
+  background-color: #50727B;
+}
+
+footer .div p{
+  font-size: clamp(2.5rem, -2.1875rem + 15vw, 6.25rem);
+  margin-top:-50px;
+  color:black;
+}
+
+footer img{
+  height:60px;
+  width:150px;
+}
+
+.container{
+  width: 1140px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-content{
+  width: 33.3%;
+  text-align: center;
+}
+
+h2{
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.footer.content p{
+  width: 190px;
+  margin: auto;
+  padding: 7px;
+  text-align: center;
+}
+
+.footer-content ul{
+  text-align: center;
+}
+
+.list{
+  padding: 0;
+}
+
+.list li{
+  width: auto;
+  text-align: center;
+  list-style-type: none;
+  padding: 7px;
+  position: relative;
+}
+
+.list a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.list li::before{
+  content: '';
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 100%;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition-duration: .5s;
+}
+
+.list li:hover::before{
+  width: 70px;
+}
+
+.social-media{
+  display: flex;
+  justify-content: start;
+  }
+  
+  .social-media a{
+  text-decoration: none;
+  padding: 10px;background-color: #50727B;
+  margin: 10px;
+  border-radius: 50%;
+  }
+  
+  .social-media a i{
+  font-size: 2em;
+  color: black;
+  opacity: 0.9;
+  }
+  
+  /* Hover Effects on Social Media Icons */
+  .social-media a:hover{
+  background-color: black;
+  transition: 0.5s;
+  }
+  
+  .social-media a:hover i{
+  color: white;
+  transition: 0.5;
+  }
+
+.footerBottom{
+background-color: #35374B;
+padding: 20px;
+text-align: center;
+}
+
+.footerBottom p{
+color: white;
+}
+
+@media (max-width: 700px){
+  .footer-content ul{
+    flex-direction: column;
+  }
+  .footer-content ul li{
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+  }
+  footer p{
+    text-align: center;
+  }
+  footer img{
+    text-align: center;
+  }
+  .social-media{
+    justify-content: center;
+  }
+  .container{
+    text-align: center;
+    flex-direction: column;
+  }
+}
+
+.list-container{
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.left-col{
+  flex-basis: 70%;
+}
+
+.right-col{
+  flex-basis: 25%;
+}
+
+.left-col h1{
+  color:#333;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.house{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 30px 0;
+  border-top: 1px solid #ccc;
+}
+
+.house-img{
+  flex-basis: 40%;
+}
+
+.house-info{
+  flex-basis: 58%;
+  color: #555;
+}
+
+.house-img img{
+  width: 100%;
+  border-radius: 12px;
+}
+
+.house-info h3{
+  font-weight: 600;
+  color: #333;
+  font-size:22px;
+  margin: 4px 0;
+}
+
+.house-info i{
+  color: #ff5361;
+  font-size:18px;
+  margin: 10px 1px;
+}
+
+.house-price{
+  text-align: right;
+}
+
+.house-price h4{
+  font-size: 20px;
+}
+
+.house-price h4 span{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.sidebar{
+  border: 1px solid #999;
+  padding: 20px 30px;
+  margin-top: 30px;
+}
+
+.sidebar h2{
+  font-weight: 500;
+}
+
+.sidebar h3{
+  font-weight: 500;
+  margin: 20px 0 10px;
+}
+
+.filter{
+  display: flex;
+  align-items: center;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.filter p{
+  flex: 1;
+}
+
+.filter input{
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.sideber-link{
+  text-align: right;
+  margin: 20px 0;
+}
+
+.sidebar-link a{
+  text-decoration: none;
+  color: purple
+}
+
+.pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin : 40px 0;
+}
+
+.pagination i{
+  width: 15px;
+  margin: 10px 20px
+}
+
+.pagination span{
+  margin:10px 8px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.pagination .current{
+  background: #333;
+  color: #fff
+}
+
+@media only screen and (max-widht: 700px) {
+  .list-container{
+    margin-top: 150px;
+  }
+  .left-col, .right-col, .house-img, .house-info{
+    flex-basis: 100%;
+  }
+  .left-col h1{
+    font-size: 22px;
+  }
+  .house-info h3{
+    font-size: 18px;
+  }
+  .house-info i{
+    font-size: 16px;
+  }
+  .pagination span{
+    margin: 10px 2px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+  }
+}
+
+
+
+
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try</title>
+  <script src="https://kit.fontawesome.com/40132d47ff.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="try.css">
+</head>
+<body>
+  <header>
+
+  </header>
+  <nav class="nav">
+    <input type="checkbox" id="nav-checkbox" class="nav-checkbox"/>
+    <label for="nav-checkbox" class="toggle">
+        <img class="menu" src="/img/menu-svgrepo-com.svg" alt />
+        <img class="close" src="/img/xmark-svgrepo-com.svg"/ alt >
+    </label>
+    <ul class="menu">
+      <li><a href="front.html"><img class="logo" src="/img/House Logo.png"></a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Pricing.html">Pricing</a></li>
+      <li><a href="Product.html">Product</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><button class="btn-31">
+        <span class="text-container">
+          <span class="text"><a href="javascript:alert('Coming Soon');">Book Now</a></span>
+        </span>
+      </button>
+    </li>
+  </ul>
+  </nav>
+
+  <div class="Container">
+    <div class="list containner">
+      <div class="left-col">
+        <p>5 Options</p>
+        <h1>Recommended Villas in Hacienda State's</h1>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/HD1.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/HD2.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 02 Amacour</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/HD3.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/HD4.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/HD5.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <p>15 Options</p>
+        <h1>Recommended Condominium in Hacienda State's</h1>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Condo1.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Condo2.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Condo3.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Condo4.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Condo5.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <p>15 Options</p>
+        <h1>Recommended Apartment's in Hacienda State's</h1>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Apartment1.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Apartment2.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Apartment3.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Apartment4.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+        <div class="house">
+          <div class="house-img">
+            <img src="/img/Apartment5.jpg" alt="House">
+          </div>
+          <div class="house-info">
+            <p>Villas</p>
+            <h3>Villa 01 Sentrocius</h3>
+            <p>1 Bedroom / 1 Bathroom / Wifi / Kitchen</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <div class="house-price">
+              <p>2 Guest</p>
+              <h4>$ 100 <span>/ day</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="sidebar">
+          <h2> Select Filters</h2>
+          <h3>Property Type</h3>
+          <div class="filter">
+            <input type="checkbox"> <p>Villa</p> <span>(0)</span>
+          </div>
+          <div class="filter">
+            <input type="checkbox"> <p>Condominium</p> <span>(0)</span>
+          </div>
+          <div class="filter">
+            <input type="checkbox"> <p>Apartment</p> <span>(0)</span>
+          </div>
+          <h3>Amenities</h3>
+          <div class="filter">
+            <input type="checkbox"> <p>Air Conditioning</p> <span>(0)</span>
+          </div>
+          <div class="filter">
+            <input type="checkbox"> <p>Wifi</p> <span>(0)</span>
+          </div>
+          <div class="filter">
+            <input type="checkbox"> <p>Court</p> <span>(0)</span>
+          </div>
+          <div class="filter">
+            <input type="checkbox"> <p>Pool</p> <span>(0)</span>
+          </div>
+          <div class="filter">
+            <input type="checkbox"> <p>Kitchen</p> <span>(0)</span>
+          </div>
+
+          <div class="sidebar-link">
+            <a href="#">View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination">
+  <i class="fa-solid fa-less-than"></i>
+     <span class="current">1</span>
+     <span>2</span>
+     <span>3</span>
+     <span>4</span>
+     <span>5</span>
+     <span>&middot; &middot; &middot; &middot;</span>
+     <span>20</span>
+   <i class="fa-solid fa-greater-than"></i>
+  </div>
+
+  <footer class="vw-100  navbar-custom-bg ">
+    <svg class="separator" width="100%" height="120" viewBox="0.1 0.2 180 40" preserveAspectRatio="none">
+        <g transform="translate(-18.298844,-77.973964)">
+            <path style="fill:#35374B;" d="M 31.615583,86.351641 H 192.16499 v 26.901969 c 0,0 -32.03411,-14.237983 -59.62682,-12.72484 -22.34188,1.2252 -54.779359,9.72634 -54.779359,9.72634 0,0 -22.029534,3.62882 -34.471238,-1.88988 -12.441702,-5.51871 -11.67199,-22.013589 -11.67199,-22.013589 z" />
+            <path style="fill:#fff;" d="M 18.441597,78.106256 H 198.58126 v 39.288614 c 0,0 -43.10672,-27.825245 -73.47599,-19.687823 -30.369264,8.137423 -46.832208,12.548653 -46.832208,12.548653 0,0 -32.775418,8.05972 -46.735258,0 C 17.577964,102.19598 18.441597,78.106256 18.441597,78.106256 Z" />
+        </g>
+    </svg>
+    <center>
+        <img src="/img/House Logo.png"> 
+        <br><br><br>
+        <div class="div">
+        <p style="font-family:Mistral;">Hacienda State's</p>
+        </div>
+    </center>
+
+    <div class="container">
+      <div class="footer-content">
+        <h2>Contact Us</h2>
+        <p>Email: sean15atienza05@gmail.com</p>
+        <p>Phone: 09759813404</p>
+        <p>Address: Lusacan Tiaong Quezon</p>
+      </div>
+      <div class="footer-content">
+        <h2>Quick Links</h2>
+        <ul class="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Pricing.html">Pricing</a></li>
+          <li><a href="Product.html">Product</a></li>
+          <li><a href="About.html">About</a></li>
+          <li><button class="btn-31">
+          <span class="text-container">
+          <span class="text"><a href="javascript:alert('Coming Soon');">Book Now</a></span>
+         </span>
+         </button></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h2>Follow Us</h2>
+        <div class="social-media">
+          <a href="https://www.facebook.com/wynxxiash4?mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+          <a href="https://m.me/wynxxiash4"><i class="fab fa-facebook-messenger"></i></a>
+          <a href="https://www.instagram.com/wynxiaasha?igsh=Y2c0bjhiamw4NjI1"><i class="fab fa-instagram"></i></a>
+          <a href="mailto:atienzaseanwayne_bsit@plmun.edu.ph"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://youtube.com/@SeanWayneAtienza?si=OphBC9DnwM7jNuW9"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footerBottom">
+      <h4>Copy ©️ 2024 - Hacienda State's / All Right - Reserved</h4>
+    </div>
+</footer>
+</body>
+</html>
